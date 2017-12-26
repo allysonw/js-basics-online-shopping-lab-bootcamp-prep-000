@@ -18,7 +18,7 @@ function find(array, criteriaFn) {
     // return it — recall that `return` will exit the
     // entire function!
     if (criteriaFn(current)) {
-      return current
+      return current;
     }
 
     // if `current` is an array, we want to push all of
@@ -28,14 +28,16 @@ function find(array, criteriaFn) {
         next.push(current[i])
       }
     }
-      // if current is an object, push all its values onto next array
+    // if current is an object, push all its values onto `next` array
     else if ((typeof current === "object") && (current !== null)) {
       console.log("typeof current is: " + (typeof current) + " and current is: "  + current);
       console.log("Object.keys(current) is: " + (Object.keys(current)));
       console.log("and its length is: " + (Object.keys(current)).length);
       console.log("typeof length is: " + (typeof (Object.keys(current)).length));
       for (let i = 0; i < ((Object.keys(current)).length); i++) {
-        var keyName = Object.keys(current[i]); // what if current[i] is an object?
+        console.log("i is " + i " at beginnign of loop");
+        console.log("Current[i] is: " + current[i] + " at beginnign of loop");
+        var keyName = Object.keys(current)[i]; // what if current[i] is an object?
         console.log("i: " + i + " keyName: " + keyName);
         var value = current[keyName];
         console.log("keyname is: " + keyName + " and value is: " + value);
@@ -51,6 +53,5 @@ function find(array, criteriaFn) {
     current = next.shift()
   }
 
-  // if we haven't
   return null
 }
