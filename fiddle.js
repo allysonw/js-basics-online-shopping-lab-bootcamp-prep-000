@@ -36,8 +36,9 @@ function find(array, criteriaFn) {
       console.log("typeof length is: " + (typeof (Object.keys(current)).length));
       for (let i = 0; i < ((Object.keys(current)).length); i++) {
         var keyName = Object.keys(current[i]); // what if current[i] is an object?
+        console.log("i: " + i + " keyName: " + keyName);
         var value = current[keyName];
-        console.log("keyname is: " + keyname + " and value is: " + value);
+        console.log("keyname is: " + keyName + " and value is: " + value);
         next.push(value);
       }
     }
