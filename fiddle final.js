@@ -23,7 +23,7 @@ function find(array, criteriaFn) {
 
   while (current || ((typeof current === "object") && (current !== null)) || current === 0) {
     // if `current` satisfies the `criteriaFn`, then return it
-    
+
     if (criteriaFn(current)) {
       return current;
     }
@@ -35,11 +35,12 @@ function find(array, criteriaFn) {
         next.push(current[i])
       }
     }
-    // if current is an object, push all its values onto `next` array
+
+    // also, if current is an object, push all its values onto `next` array
     else if ((typeof current === "object") && (current !== null)) {
-      
+
       for (let i = 0; i < ((Object.keys(current)).length); i++) {
-        
+
         var keyName = Object.keys(current)[i];
         var value = current[keyName];
         next.push(value);
