@@ -13,17 +13,19 @@ function find(array, criteriaFn) {
   // we exhaust `next` and, below, attempt to
   // `shift()` `undefined` (when `next` is empty)
   // onto `current`, we'll exit the loop
-  while (current) {
+  while (current || ((typeof current === "object") && (current !== null))) {
     // if `current` satisfies the `criteriaFn`, then
-    // return it — recall that `return` will exit the
-    // entire function!
+    // return it
+    console.log("starting loop.");
     if (criteriaFn(current)) {
+      console.log("match");
       return current;
     }
 
     // if `current` is an array, we want to push all of
     // its elements (which might be arrays) onto `next`
     if (Array.isArray(current)) {
+      console.log("current is an array");
       for (let i = 0; i < current.length; i++) {
         next.push(current[i])
       }
@@ -35,14 +37,17 @@ function find(array, criteriaFn) {
       console.log("and its length is: " + (Object.keys(current)).length);
       console.log("typeof length is: " + (typeof (Object.keys(current)).length));
       for (let i = 0; i < ((Object.keys(current)).length); i++) {
-        console.log("i is " + i " at beginnign of loop");
-        console.log("Current[i] is: " + current[i] + " at beginnign of loop");
+        console.log("i is " + i + " at beginning of loop");
+        console.log("Current[i] is: " + current[i] + " at beginning of loop");
+        console.log("Object.keys(current) is: " + Object.keys(current))
         var keyName = Object.keys(current)[i]; // what if current[i] is an object?
         console.log("i: " + i + " keyName: " + keyName);
         var value = current[keyName];
         console.log("keyname is: " + keyName + " and value is: " + value);
         next.push(value);
       }
+      console.log(`Next is: ${next} at end of loop cycle`);
+      console.log(`LOOP RAN - Current is: ${current} at end of loop cycle`)
     }
 
     // after pushing any children (if there
